@@ -1,8 +1,8 @@
 {
-  "name": "react-redux-starter-kit",
-  "version": "3.0.0-alpha.2",
-  "description": "Get started with React, Redux, and React-Router!",
-  "main": "index.js",
+  "name": "react-image-cropper",
+  "version": "1.0.0",
+  "description": "Simple image cropper",
+  "main": "src/components/Cropper.js",
   "engines": {
     "node": ">=4.5.0",
     "npm": "^3.0.0"
@@ -71,9 +71,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davezuko/react-redux-starter-kit.git"
+    "url": "git+https://github.com/pedroposada/react-image-cropper.git"
   },
-  "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
+  "author": "Pedro Posada",
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.17.0",
