@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './CoreLayout.sass'
+// import styles from './CoreLayout.sass'
 
 export const CoreLayout = ({ children }) => (
   <div>

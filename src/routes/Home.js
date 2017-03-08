@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Card, CardHeader, CardActions } from 'material-ui/Card'
+import { Card, CardHeader } from 'material-ui/Card'
 import Cropper from 'components/Cropper'
-import styles from './Home.sass'
+// import styles from './Home.sass'
 
 class Home extends Component {
   state = {

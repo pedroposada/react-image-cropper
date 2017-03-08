@@ -120,7 +120,7 @@ class Cropper extends Component {
         zoom: 1
       })
       this.initCropper({ dragMode: 'move' })
-    }).catch((error) => log.debug('onFileSelected failed', error))
+    }).catch((error) => console.log('onFileSelected failed', error))
   }
 
   zoomControl = (event, newValue) => {
@@ -134,7 +134,7 @@ class Cropper extends Component {
         this.setState((prevState, props) => ({
           zoom: newValue
         }))
-      }).catch((error) => log.debug('zoomControl', error))
+      }).catch((error) => console.log('zoomControl', error))
     }
   }
 
@@ -154,7 +154,7 @@ class Cropper extends Component {
         })
         this.initCropper()
       })
-      .catch((error) => log.debug('onCropImage failed', error))
+      .catch((error) => console.log('onCropImage failed', error))
   }
 
   onEdit = () => {
@@ -198,7 +198,7 @@ class Cropper extends Component {
           })
           this.initCropper()
         })
-        .catch((error) => log.debug('prepareImage failed', error))
+        .catch((error) => console.log('prepareImage failed', error))
     }
   }
 
@@ -227,7 +227,7 @@ class Cropper extends Component {
     } = this
     return (
       <div
-        style={{width: `${width}px`}}
+        style={{ width: `${width}px` }}
         >
         <div
           className={styles.bgContainer}
