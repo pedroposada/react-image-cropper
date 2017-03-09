@@ -1,13 +1,14 @@
 {
   "name": "react-image-cropper",
   "version": "1.0.0",
-  "description": "Simple image cropper",
-  "main": "src/components/Cropper.js",
+  "description": "Simple image cropper as a react component",
+  "main": "lib/react-image-cropper.js",
   "engines": {
     "node": ">=4.5.0",
     "npm": "^3.0.0"
   },
   "scripts": {
+    "build": "babel src/components/Cropper.js --presets=es2015,react,stage-0 --plugins=babel-plugin-add-module-exports > lib/react-image-cropper.js",
     "clean": "rimraf dist",
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests",
@@ -16,9 +17,7 @@
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
-    "deploy": "better-npm-run deploy",
-    "deploy:dev": "better-npm-run deploy:dev",
-    "deploy:prod": "better-npm-run deploy:prod",
+    "deploy": "npm build && better-npm-run deploy && cp ./dist/index.html ./index.html",
     "codecov": "cat coverage/*/lcov.info | codecov"
   },
   "betterScripts": {
@@ -38,21 +37,7 @@
     "deploy": {
       "command": "npm run lint && npm run test && npm run clean && npm run compile",
       "env": {
-        "DEBUG": "app:*"
-      }
-    },
-    "deploy:dev": {
-      "command": "npm run deploy",
-      "env": {
-        "NODE_ENV": "development",
-        "DEBUG": "app:*"
-      }
-    },
-    "deploy:prod": {
-      "command": "npm run deploy",
-      "env": {
-        "NODE_ENV": "production",
-        "DEBUG": "app:*"
+        "NODE_ENV": "production"
       }
     },
     "test": {
@@ -70,6 +55,13 @@
   "author": "Pedro Posada",
   "license": "MIT",
   "dependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-inline-css": "^2.3.0",
+    "cropperjs": "^1.0.0-beta.2",
+    "material-ui": "^0.17.0"
+  },
+  "devDependencies": {
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-transform-runtime": "^6.15.0",
@@ -79,7 +71,6 @@
     "babel-runtime": "^6.11.6",
     "better-npm-run": "0.0.13",
     "compression": "^1.6.2",
-    "cropperjs": "^1.0.0-beta.2",
     "css-loader": "^0.26.0",
     "cssnano": "^3.7.4",
     "debug": "^2.2.0",
@@ -90,12 +81,9 @@
     "imports-loader": "^0.7.0",
     "ip": "^1.1.2",
     "json-loader": "^0.5.4",
-    "material-ui": "^0.17.0",
     "node-sass": "^4.0.0",
     "normalize.css": "^5.0.0",
     "postcss-loader": "^1.1.0",
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.0",
     "react-tap-event-plugin": "^2.0.1",
@@ -108,10 +96,10 @@
     "svg-url-loader": "^2.0.2",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.14",
-    "yargs": "^6.3.0"
-  },
-  "devDependencies": {
+    "yargs": "^6.3.0",
+    "babel-cli": "^6.23.0",
     "babel-eslint": "^7.1.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-istanbul": "^3.0.0",
     "chai": "^3.4.1",
     "chai-as-promised": "^6.0.0",
@@ -140,6 +128,7 @@
     "redbox-react": "^1.2.10",
     "sinon": "^1.17.5",
     "sinon-chai": "^2.8.0",
+    "to-string-loader": "^1.1.5",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2"
   }

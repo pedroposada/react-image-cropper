@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, CardHeader } from 'material-ui/Card'
-import Cropper from 'components/Cropper'
-// import styles from './Home.sass'
+import Cropper from '../../lib/react-image-cropper'
+import 'cropperjs/dist/cropper.css'
 
 class Home extends Component {
   state = {

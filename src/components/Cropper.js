@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import CropperJS from 'cropperjs'
-import 'cropperjs/dist/cropper.css'
-import styles from './Cropper.sass'
 import Slider from 'material-ui/Slider'
 import IconButton from 'material-ui/IconButton'
 import ActionDone from 'material-ui/svg-icons/action/done'
@@ -10,6 +8,7 @@ import Reset from 'material-ui/svg-icons/action/restore'
 import FileUpload from 'material-ui/svg-icons/file/file-upload'
 import FileDownload from 'material-ui/svg-icons/file/file-download'
 import FileEdit from 'material-ui/svg-icons/editor/mode-edit'
+import InlineCss from 'react-inline-css'
 
 class Cropper extends Component {
   state = {
@@ -226,69 +225,94 @@ class Cropper extends Component {
       onEdit
     } = this
     return (
-      <div
-        style={{ width: `${width}px` }}
-        >
+      <InlineCss stylesheet={`
+          & .bgContainer {
+            background-color: #a8a8a8;
+          }
+          & .actions {
+            float: right;
+          }
+          & .wrapActions {
+            height: 3rem;
+          }
+          & .fileField {
+            opacity: 0;
+            height: 40px;
+            width: 40px;
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
+          & .zoomControl {
+            padding: 0 1rem;
+          }
+        `}>
         <div
-          className={styles.bgContainer}
-          style={{
-            height: `${height}px`,
-            width: `${width}px`
-          }}
-        >
-          <img
-            src={originalImage}
-            ref={'imageContainer'}
-          />
-        </div>
-        { editing &&
-        <Slider
-          min={1}
-          max={3}
-          step={0.01}
-          value={zoom}
-          onChange={zoomControl}
-          disabled={!originalImage}
-          className={styles.zoomControl}
-          sliderStyle={{ marginTop: 0, marginBottom: 0 }}
-        />
-        }
-        <div
-          className={styles.actions}
+          style={{ width: `${width}px` }}
           >
-          <IconButton tooltip={'Select new image file'}>
-            <input
-              ref='in'
-              type='file'
-              accept='image/*'
-              onChange={onFileSelected}
-              value={''}
-              className={styles.fileField}
+          <div
+            className={'bgContainer'}
+            style={{
+              height: `${height}px`,
+              width: `${width}px`
+            }}
+          >
+            <img
+              src={originalImage}
+              ref={'imageContainer'}
             />
-            <FileUpload />
-          </IconButton>
+          </div>
           { editing &&
-          <IconButton tooltip={'Crop image'} onClick={onCropImage}>
-            <ActionDone />
-          </IconButton>
+          <Slider
+            min={1}
+            max={3}
+            step={0.01}
+            value={zoom}
+            onChange={zoomControl}
+            disabled={!originalImage}
+            className={'zoomControl'}
+            sliderStyle={{ marginTop: 0, marginBottom: 0 }}
+          />
           }
-          { editing &&
-          <IconButton tooltip={'Reset zoom and center'} onClick={onCancel}>
-            <Reset />
-          </IconButton>
-          }
-          {
-            !editing && originalImage &&
-            <IconButton tooltip={'Edit image'} onClick={onEdit}><FileEdit /></IconButton>
-          }
-          {
-            !editing && originalImage &&
-            <a href={originalImage} target='_blank'>
-              <IconButton tooltip={'Open image in new window'}><FileDownload /></IconButton>
-            </a>
-          }
+          <div className='wrapActions'>
+            <div
+              className={'actions'}
+              >
+              <IconButton tooltip={'Select new image file'}>
+                <input
+                  ref='in'
+                  type='file'
+                  accept='image/*'
+                  onChange={onFileSelected}
+                  value={''}
+                  className={'fileField'}
+                />
+                <FileUpload />
+              </IconButton>
+              { editing &&
+              <IconButton tooltip={'Crop image'} onClick={onCropImage}>
+                <ActionDone />
+              </IconButton>
+              }
+              { editing &&
+              <IconButton tooltip={'Reset zoom and center'} onClick={onCancel}>
+                <Reset />
+              </IconButton>
+              }
+              {
+                !editing && originalImage &&
+                <IconButton tooltip={'Edit image'} onClick={onEdit}><FileEdit /></IconButton>
+              }
+              {
+                !editing && originalImage &&
+                <a href={originalImage} target='_blank'>
+                  <IconButton tooltip={'Open image in new window'}><FileDownload /></IconButton>
+                </a>
+              }
+            </div>
+          </div>
         </div>
-      </div>
+      </InlineCss>
     )
   }
 }
