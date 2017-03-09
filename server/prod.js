@@ -8,7 +8,7 @@ const app = express()
 app.use(compress())
 
 // path to root index.html
-app.use(express.static(`${project.paths.dist()}/../`))
+app.use(express.static(project.paths.dist()))
 
 app.listen(project.server_port)
 console.log(`Server is now running at http://localhost:${project.server_port}.`)

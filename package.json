@@ -17,7 +17,7 @@
     "dev": "better-npm-run dev",
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
-    "deploy": "npm build && better-npm-run deploy && cp ./dist/index.html ./index.html",
+    "deploy": "npm build && better-npm-run deploy",
     "codecov": "cat coverage/*/lcov.info | codecov"
   },
   "betterScripts": {
