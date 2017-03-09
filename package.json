@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "babel src/components/Cropper.js --presets=es2015,react,stage-0 --plugins=babel-plugin-add-module-exports > lib/react-image-cropper.js",
-    "clean": "rimraf dist",
+    "clean": "rimraf docs",
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests",
     "lint:fix": "npm run lint -- --fix",
