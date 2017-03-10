@@ -59,6 +59,7 @@
     "material-ui": "^0.17.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
+    "react-image-cropper": "https://github.com/pedroposada/react-image-cropper.git",
     "react-inline-css": "^2.3.0"
   },
   "devDependencies": {

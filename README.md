@@ -1,13 +1,13 @@
 # React Image Cropper
 
 ### Demo
-[View Live Demo](https://react-image-cropper-mlaeyifgqa.now.sh/)
+[View Live Demo](https://pedroposada.github.io/react-image-cropper/)
 
 ### Usage example with webpack
 ```javascript
 import React, { Component } from 'react'
 import { Card, CardHeader } from 'material-ui/Card'
-import Cropper from 'components/Cropper'
+import Cropper from 'react-image-cropper'
 /**
  * include CSS file from cropperjs
  */
@@ -41,6 +41,10 @@ class Home extends Component {
 }
 ```
 ### Installation
+```
+yarn add https://github.com/pedroposada/react-image-cropper.git
+```
+or
 ```
 npm install https://github.com/pedroposada/react-image-cropper.git
 ```
